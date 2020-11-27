@@ -1,0 +1,570 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model TopUsersVM
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+        background-image: url("/img/Group 141.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top;
+        color: #3C473B
+    }
+
+    #profil {
+        width: 55px;
+        height: 55px;
+        float: right;
+        border-radius: 50%;
+        position: relative;
+        top: 10px;
+        right: 20px;
+    }
+
+    #user {
+        color: white;
+        float: right;
+        font-size: 20px;
+        position: relative;
+        top: 20px;
+        right: 50px;
+    }
+
+
+    #menu {
+        width: 76px;
+        height: 93%;
+        margin-top: 100px;
+        float: left;
+    }
+
+        #menu div:first-child {
+            border-left: 5px solid white;
+        }
+
+        #menu img {
+            margin-top: 25px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+    #central {
+        width: calc(100% - 76px);
+        height: 95%;
+        float: left;
+        margin-top: 21px;
+    }
+
+    #left {
+        width: 60%;
+        height: 100%;
+        float: left;
+    }
+
+    #right {
+        width: 40%;
+        height: 100%;
+        float: left;
+    }
+
+    #topleft {
+        width: 100%;
+        height: 50%;
+        padding: 50px;
+    }
+
+    #bottomleft {
+        height: 50%;
+        width: 50%;
+        float: left;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-bottom: 60px;
+    }
+
+    #bottomright {
+        height: 50%;
+        width: 50%;
+        float: left;
+        padding-left: 50px;
+        padding-right: 50px;
+        padding-bottom: 60px;
+    }
+
+    #right {
+        height: 100%;
+        width: 40%;
+        float: left;
+        padding: 50px;
+        padding-bottom: 60px;
+    }
+
+    #montchart {
+        width: 100%;
+        height: 100%;
+        border-radius: 30px;
+        box-shadow: 2px 5px 18px #888888;
+    }
+
+    #chart2, #chart3 {
+        width: 100%;
+        height: 100%;
+        border-radius: 30px;
+        box-shadow: 2px 5px 18px #888888;
+    }
+
+    #top5 {
+        height: 100%;
+        border-radius: 30px;
+        width: 100%;
+        box-shadow: 2px 5px 18px #888888;
+    }
+
+        #top5 p:first-child {
+            color: #F0AF1B;
+            font-size: 30px;
+            padding-top: 40px;
+            margin-bottom: 0;
+        }
+
+        #top5 p {
+            margin-left: 30px;
+        }
+
+    #montchart p:first-child {
+        color: #F0AF1B;
+        font-size: 30px;
+        margin-bottom: 0;
+        border: none;
+        padding: 0;
+    }
+
+    #montchart p, select {
+        margin-left: 600px;
+        display: block;
+    }
+
+    select {
+        border: none;
+        background-color: transparent;
+        margin-top: 20px;
+        padding: 0;
+        padding-top: 20px;
+    }
+
+    select, option {
+        color: #F0AF1B;
+        font-size: 30px;
+        margin-bottom: 0;
+        outline: none;
+    }
+
+    option {
+        font-size: 24px;
+    }
+
+    ul {
+        padding: 10px;
+    }
+
+        ul li {
+            text-decoration: none;
+            list-style: none;
+            margin-top: 10px;
+            color: white;
+        }
+
+    li span {
+        color: #3C473B
+    }
+
+    li div {
+        background-color: #EFF0EF;
+        border-radius: 40px;
+        padding: 5px;
+        color: #F0AF1B;
+    }
+  
+    .tvoja {
+        list-style: none;
+        font-size: 20px;
+        margin: 10px;
+    }
+    .moja {
+        width: 40%;
+        float: left;
+        margin-bottom: 10px;
+        
+    }
+    .moja :hover{
+        cursor:pointer;
+    }
+/*    li:first-child div {
+        color: white;
+        background-color: #F0AF1B;
+    }*/
+    .njegova:first-child div {
+        color: white;
+        background-color: #F0AF1B;
+    }
+    #listContainer {
+        font-size: 20px;
+    }
+
+        #listContainer img:nth-child(1) {
+            border-radius: 50%;
+            width: 65px;
+            height: 65px;
+        }
+
+        #listContainer img:first-child {
+            margin-right: 10px;
+        }
+
+        #listContainer img:nth-child(2) {
+            margin-left: 40px;
+            margin-right: 40px;
+        }
+
+        #listContainer img:nth-child(3) {
+            margin-left: 80px;
+            height: 20px;
+            width: 10px;
+        }
+
+    #montchart {
+        padding-left: 30px;
+    }
+
+    #menu div {
+        cursor: pointer;
+    }
+
+        #menu div:last-child {
+            position: relative;
+            top: 48%;
+        }
+
+    #montchart1 {
+        position: relative;
+        bottom: 100px;
+        z-index: -1;
+    }
+
+    p img {
+        width: 10px;
+        height: 15px;
+        transform: rotate(90deg);
+    }
+
+    #chart2 p {
+        width: 100%;
+    }
+
+    #infoStat {
+        color: #F0AF1B;
+        font-size: 30px;
+        margin-bottom: 0;
+        padding-top: 15px;
+        border: none;
+        padding: 0;
+    }
+
+    #info {
+        margin-top: 40px;
+    }
+
+    .infoOrange {
+        color: #F0AF1B;
+    }
+
+    #info p {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+
+    #infoStat {
+        padding-top: 20px;
+    }
+
+/*    #chart3 p {
+        margin-left: 20px;
+    }*/
+
+    #piechart {
+        position: relative;
+        bottom: 40px;
+        right: 40px;
+    }
+
+    #title {
+        color: #F0AF1B;
+        font-size: 30px;
+        margin-bottom: 0;
+        border: none;
+        padding: 0;
+        position: relative;
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        width: 200px;
+        top:110px;
+        right:60px;
+        text-align:center;
+    }
+
+    #projects{
+        position: relative;
+        bottom: 40px;
+        left: 80px;
+    }
+
+    #chart2:hover{
+        cursor:pointer;
+    }
+
+    #hidden {
+        width: 400px;
+        height: 300px;
+        background-color: transparent;
+        display: none;
+        position: absolute;
+        z-index:100
+    }
+
+        #hidden button {
+            color: white;
+            background-color: #F0AF1B;
+            border-radius: 20px;
+            margin-left: 20px;
+            width:300px;
+            display: block;
+            box-shadow: 1px 1px 7px #888888;
+            margin-top:20px;
+            padding:10px;
+            outline:none;
+            border:none;
+        }
+</style>
+
+<div>
+    <img id="profil" src="~/img/Group 205.png" />
+    <span id="user">@Model.name</span>
+</div>
+
+<div id="menu">
+    <div id="firstItem">
+        <img src="~/img/Dashboard.png" alt="Alternate Text" onclick="location.href='@Url.Action("Index", "Administrator")'"/>
+    </div>
+    <div id="firstItem">
+        <img src="~/img/task-list.png" alt="Alternate Text" id="blurAction"/>
+    </div>
+    <div>
+        <img src="~/img/user.png" alt="Alternate Text" onclick="location.href='@Url.Action("Profil", "Administrator")'"/>
+    </div>
+    <div>
+        <img src="~/img/on-off-button.png" alt="Alternate Text"  onclick="location.href='@Url.Action("Logout", "Administrator")'"/>
+    </div>
+</div>
+
+<div id="central">
+    <div id="hidden">
+        <button onclick="location.href='@Url.Action("DodajKorisnika", "Korisnik")'">Add New User</button>
+        <button onclick="location.href='@Url.Action("Prikazi", "Korisnik")'">All Users</button>
+        <button onclick="location.href='@Url.Action("VjestineDodaj", "Vjestine")'">Add New Skill</button>
+        <button onclick="location.href='@Url.Action("Award", "Trofej")'">Award Trophy</button>
+    </div>
+    <div id="left">
+        <div id="topleft">
+            <div id="montchart">
+                <div id="title">Project teams</div>
+                <div style="font-size=20px">
+                    <ul id="projects">
+                        @for (var i = 0; i < 3; i++)
+                        {
+                            <li class="tvoja">
+                                <div class="moja" onclick="location.href='@Url.Action("PrikaziAktivneProjekte", "Projekt")'">
+                                    <img src="~/img/setting.png" style=" border-radius: 50%; width: 50px; height: 50px;" />
+                                    @Model.Projekti[i]
+                                    @*@if (i == 0)
+                                        {
+                                            <img src="~/img/badge1.png" alt="Alternate Text" />
+                                            @Model.Projekti[i]
+                                            <img src="~/img/right-arrow.png" alt="Alternate Text" />
+                                        }
+                                        else
+                                        {
+                                            <img src="~/img/badge2.png" alt="Alternate Text" />
+                                            @Model.Projekti[i]
+                                            <img src="~/img/right-arrow-1.png" alt="Alternate Text" />
+                                        }*@
+
+                                </div>
+                                <div class="moja" style="margin-left:30px" onclick="location.href='@Url.Action("PrikaziAktivneProjekte", "Projekt")'">
+                                    <img src="~/img/setting.png" style=" border-radius: 50%; width: 50px; height: 50px;" />
+                                    @Model.Projekti[i + 1]
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="bottomleft">
+            <div id="chart2" onclick="location.href='@Url.Action("ProjektDodaj","Projekt")'">
+                <h3 id="infoStat" style="text-align:center">Projects</h3>
+                <p style="text-align: center">Add new project</p>
+                <div id="info" style="text-align: center">
+                    <img src="~/img/add.png" alt="Alternate Text"  />
+                </div>
+            </div>
+        </div>
+        <div id="bottomright">
+            <div id="chart3" style="text-align: center">
+                <p id="infoStat">Position</p>
+                <p style="margin-bottom:0;">Positions in top five</p>
+                <div id="piechart"></div>
+
+            </div>
+        </div>
+    </div>
+    <div id="right">
+        <div id="top5">
+            <p>Top five</p>
+            <p>This Month</p>
+            <ul>
+                @for (var i = 0; i < Model.tuples.Count(); i++)
+                {
+                    <li class="njegova">
+                        <div id="listContainer">
+                            <img src="~/imgUpload/@Model.tuples[i].Item1.PhotoRuta" alt="Alternate Text" />
+                            @Model.tuples[i].Item1.Ime @Model.tuples[i].Item1.Prezime
+                            @if (i == 0)
+                            {
+                                <img src="~/img/badge1.png" alt="Alternate Text" />
+                                @Model.tuples[i].Item2
+                                <img src="~/img/right-arrow.png" alt="Alternate Text" />
+                            }
+                            else
+                            {
+                                <img src="~/img/badge2.png" alt="Alternate Text" />
+                                @Model.tuples[i].Item2
+                                <img src="~/img/right-arrow-1.png" alt="Alternate Text" />
+                            }
+
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script>
+    $(document).ready(function () {
+        @*$.ajax({
+            type: "POST",
+            dataType: "json",
+            contentType: "application/json",
+            url: '@Url.Action("radniciPoMjesecuGraph", "VisualizeData", new { brojMjeseca = DateTime.Now.Month })',
+            success: function (result) {
+                google.charts.load('current', {
+                    'packages': ['corechart']
+                });
+                google.charts.setOnLoadCallback(function () {
+                    drawChart(result);
+                });
+            }
+        });*@
+
+        $.ajax({
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json",
+                url: '@Url.Action("pozicijeTop5", "VisualizeData", new { brojMjeseca = DateTime.Now.Month })',
+                success: function (result) {
+                    google.charts.load('current', {
+                        'packages': ['corechart']
+                    });
+                    google.charts.setOnLoadCallback(function () {
+                        drawPieChart(result);
+                    });
+                }
+            });
+    });
+
+    function selectElement(id, valueToSelect) {
+        let element = document.getElementById(id);
+        element.value = valueToSelect;
+    }
+
+
+    function drawPieChart(result) {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Name');
+        data.addColumn('number', 'Marks Obtained');
+        var dataArray = [];
+
+        $.each(result, function (i, obj) {
+            dataArray.push([obj.stdName, obj.marksObtained]);
+        });
+        data.addRows(dataArray);
+
+        var columnChartOptions = {
+            width: 450,
+            height: 280,
+            backgroundColor: { fill: 'transparent' },
+            bar: { groupWidth: "20%" },
+        };
+
+        var columnChart = new google.visualization.PieChart(document
+            .getElementById('piechart'));
+
+        columnChart.draw(data, columnChartOptions);
+    }
+
+    function drawChart(result) {
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Name');
+        data.addColumn('number', 'Marks Obtained');
+        var dataArray = [];
+
+        $.each(result, function (i, obj) {
+            dataArray.push([obj.stdName, obj.marksObtained]);
+        });
+        data.addRows(dataArray);
+
+        var columnChartOptions = {
+            width: 650,
+            height: 250,
+            colors: ["#F0AF1B"],
+            legend: { position: 'none' },
+            backgroundColor: { fill: 'transparent' },
+            bar: { groupWidth: "50%" },
+            hAxis:{
+                baselineColor: '#fff'
+            },
+            vAxis:{
+                baselineColor: '#fff'
+            },
+        };
+
+        var columnChart = new google.visualization.ColumnChart(document
+            .getElementById('montchart1'));
+
+        columnChart.draw(data, columnChartOptions);
+    }
+
+    $('#blurAction').click(function () {
+        document.getElementById('hidden').style.display = 'block';
+    })
+</script>

@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewData["Title"] = "Prikazi";
+}
+@model List<KorisnikPrikaziVM>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            width: 100%;
+            overflow: scroll;
+            background-image: url("/img/Group 141.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: top;
+            color: #3C473B
+        }
+
+        #kontenjer {
+            width: 80%;
+            margin-top: 100px;
+            margin-left: 100px;
+        }
+    </style>
+
+    <div id="kontenjer">
+
+        <h1>All users</h1>
+
+        <table class="table table-bordered text-center">
+            <thead>
+                <tr>
+                    <th>
+                        Nb.
+                    </th>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Surname
+                    </th>
+                    <th>
+                        Date of employment
+                    </th>
+                    <th>
+                        Skills
+                    </th>
+                    <th>
+                        Photo
+                    </th>
+                    <th>
+                        Edit
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model)
+                {
+                    @if (x.isZaposlen)
+                    {
+                        <tr>
+                            <td>@x.Id</td>
+                            <td>@x.Ime</td>
+                            <td>@x.Prezime</td>
+                            <td>@x.DatumZaposlenja</td>
+                            <td>
+                                @foreach (var i in x.Skilovi)
+                                {
+                                    <span>@i,</span>
+                                }
+                            </td>
+                            <td>
+                                <img src="~/imgUpload/@x.PhotoRuta" style=" border: 1px solid #ddd; border-radius: 1px; padding: 5px; width: 50px;" />
+                            </td>
+                            <td>
+                                <a asp-action="Izmjeni" asp-route-Id="@x.Id" class="btn btn-warning">Edit</a>
+                                <a asp-action="PromjeniZaposlenFlag" asp-route-Id="@x.Id" class="btn btn-warning">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+        <br />
+        <br />
+        <a asp-action="DodajKorisnika" class="btn btn-warning">Add</a>
+        </div>

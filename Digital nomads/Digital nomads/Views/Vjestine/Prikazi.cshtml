@@ -1,0 +1,59 @@
+﻿@using Digital_nomads.ViewModels
+@{
+    ViewData["Title"] = "Prikazi";
+}
+@model IEnumerable<VjestinaVM>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            background-image: url("/img/Group 141.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: top;
+            color: #3C473B
+        }
+        #kontenjer{
+            width:80%;
+            margin-top:100px;
+            margin-left:100px;
+        }
+    </style>
+
+    <div id="kontenjer">
+        <h1>Prikazi</h1>
+        <table class="table table-bordered text-center">
+            <thead>
+                <tr>
+                    <th>
+                        Nb.
+                    </th>
+                    <th>
+                        Vjestina
+                    </th>
+                    <th>
+                        Uredi
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>@x.Id</td>
+                        <td>@x.Naziv</td>
+                        <td>
+                            <a asp-action="VjestineIzmjeni" asp-route-Id="@x.Id" class="btn btn-warning">Uredi</a>
+                            <a asp-action="VjestineObrisi" asp-route-Id="@x.Id" class="btn btn-warning">Obrisi</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+        <br />
+        <a asp-action="VjestineDodaj" class="btn btn-warning">Dodaj</a>
+    </div>

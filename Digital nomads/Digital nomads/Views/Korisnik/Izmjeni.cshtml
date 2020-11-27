@@ -1,0 +1,44 @@
+﻿
+@{
+    ViewData["Title"] = "Izmjeni";
+}
+@model KorisnikDodajVM 
+<h1>Izmjeni</h1>
+
+<form asp-action="SnimiKorisnika">
+    <span>Name:</span>
+    <input type="text" asp-for="Ime" />
+    <br />
+    <br />
+    <span>Surname:</span>
+    <input type="text" asp-for="Prezime" />
+    <br />
+    <br />
+    <span>Date of employed:</span>
+    <input type="date" asp-for="DatumZaposlenja" />
+    <br />
+    <br />
+    <span>Rola:</span>
+    <select class="form-control" asp-for="LoginRolaId" asp-items="@Model.LoginRola"></select>
+    <br />
+    <br />
+    <span>Photo:</span>
+    <select asp-for="PhotoRutaId" asp-items="@Model.PhotoRoutes" class="form-control"></select>
+    <br />
+    <br />
+    <span>Skills:</span>
+    <select multiple asp-for="VjestineId" asp-items="@Model.Vjestine" class="form-control "></select>
+    <br />
+    <br />
+    <span>Username:</span>
+    <input type="text" asp-for="Username" />
+    <br />
+    <br />
+    <span>Password:</span>
+    <input type="text" asp-for="Password" />
+    <br />
+    <br />
+    <input type="hidden" asp-for="Id">
+    <input type="hidden" asp-for="LoginID">
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>

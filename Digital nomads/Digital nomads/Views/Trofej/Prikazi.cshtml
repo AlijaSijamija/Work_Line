@@ -1,0 +1,179 @@
+﻿
+@{
+    ViewData["Title"] = "Prikazi";
+}
+@model List<TrofejPrikaziVM>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            background-image: url("/img/Group 141.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: top;
+            color: #3C473B
+        }
+
+        #profil {
+            width: 55px;
+            height: 55px;
+            float: right;
+            border-radius: 50%;
+            position: relative;
+            top: 10px;
+            right: 20px;
+        }
+
+        #menu div:nth-child(2) {
+            border-left: 5px solid white;
+        }
+
+        #user {
+            color: white;
+            float: right;
+            font-size: 20px;
+            position: relative;
+            top: 20px;
+            right: 50px;
+        }
+
+        #menu div {
+            cursor: pointer;
+        }
+
+            #menu div:last-child {
+                position: relative;
+                top: 48%;
+            }
+
+
+        #menu {
+            width: 76px;
+            height: 93%;
+            margin-top: 100px;
+            float: left;
+        }
+
+            #menu img {
+                margin-top: 25px;
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+
+        #central {
+            width: 80%;
+            height: 80%;
+            float: left;
+            margin-left:100px;
+            margin-top:100px;
+            background-color: #FAFAFA;
+            position: center;
+        }
+
+        table {
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        #title {
+            color: #F0AF1B;
+            font-size: 30px;
+            margin-bottom: 0;
+            border: none;
+            padding: 0;
+            margin: 20px;
+            position: relative;
+            width: 200px;
+            margin-bottom: 0;
+            text-align: center;
+            font-family: 'Roboto'
+        }
+
+
+        thead {
+            background-color: transparent;
+            color: #3C473B;
+            border: none;
+            font-size: 24px;
+        }
+
+        tbody {
+            color: #F0AF1B;
+            font-size: 18px;
+            background-color: white;
+        }
+
+        td a {
+            background-color: #F0AF1B;
+            border: none;
+            padding: 10px;
+            border-radius: 7px;
+            color: white;
+        }
+
+        #table1 {
+            padding: 20px;
+            padding-top: 0;
+        }
+
+        #submit {
+            background-color: #F0AF1B;
+            border: none;
+            height: 50px;
+            outline: none;
+            color: white;
+            width: 250px;
+            margin-left: 400px;
+        }
+
+        #table1 {
+            border-collapse: collapse;
+            width:80%;
+            height: 80%;
+            position:center;
+        }
+
+        th, td {
+            width: 150px;
+            text-align: center;
+            padding: 5px
+        }
+
+        .geeks {
+            border-right: hidden;
+        }
+
+        .gfg {
+            border-collapse: separate;
+            border-spacing: 0 15px;
+        }
+    </style>
+
+    <div id="central">
+        <div id="title">All trouphies</div>
+        <div id="table1">
+            <table class="table table-bordered text-center">
+                <thead>
+                    <tr>
+                        <th>
+                            Name
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in Model)
+                    {
+                        <tr>
+                            <td>@x.NazivTrofeja</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            </div>
+            <a class="btn btn-warning mb-4" asp-action="Award" >Award trophies for this month</a>
+     </div>

@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewData["Title"] = "PrikaziUcesnikeNaProjektu";
+}
+@model ProjektUcesniciVM
+
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            width: 100%;
+            overflow: scroll;
+            background-image: url("/img/Group 141.jpg");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: top;
+            color: #3C473B
+        }
+
+        #kontenjer {
+            width: 80%;
+            margin-top: 100px;
+            margin-left: 100px;
+        }
+    </style>
+
+    <div id="kontenjer">
+        <h1>Show participants in project</h1>
+
+        <table class="table table-bordered text-center">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Skills
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model.rows)
+                {
+                    <tr>
+                        <td>@x.ImeIPrezime</td>
+                        <td>
+                            @foreach (var i in x.vjestine)
+                            {
+                                <span>@i, </span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+        <br />
+        <a asp-action="ProjektDodajUcesnike" asp-route-Id="@Model.ProjektId" class="btn btn-warning">Add</a>
+    </div>

@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+
+
+<style>
+    body {
+        margin: 0;
+        width: 100%;
+        height: 100vh;
+        background-image: url("/img/login_bg.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        color: #3C473B
+    }
+
+    #left {
+        position: relative;
+        top: 220px;
+        margin-left: 170px;
+    }
+
+    #right {
+        float: right;
+        text-align: center;
+        margin-right: 400px;
+    }
+
+    #right p:first-child, h3 {
+        color: #F0AF1B;
+        font-size: 36px;
+    }
+
+    #right p:last-child {
+        width: 300px;
+        color: #F0AF1B;
+    }
+
+    input {
+        width: 250px;
+    }
+
+    #submit {
+        background-color: #F0AF1B;
+        border: none;
+        height: 50px;
+        outline: none;
+        color: white;
+    }
+
+    .text-line {
+        background-color: transparent;
+        outline: none;
+        opacity: 0.5;
+        outline-style: none;
+        border-top: none;
+        border-left: none;
+        font-style:italic;
+        border-right: none;
+        border-bottom: solid orange 3px;
+        padding: 3px 10px;
+    }
+
+
+</style>
+
+@model string
+@if (Model != "")
+{
+<div class="container alert-danger" id="msg" role="alert">
+    Login unsecesfull
+</div>
+}
+<div id="left">
+    <form asp-action="VerifikacijaLogina">
+        <h3 style="margin-bottom: 15px;">Log in</h3>
+        <input class="text-line" type="text" placeholder="username" name="username" />
+        <br />
+        <br />
+        <input class="text-line" type="password" placeholder="password" name="password" />
+        <br />
+        <br />
+        <input class="rounded-pill" id="submit" type="submit" value="LOG IN" />
+    </form>
+</div>
+<div id="right">
+    <p>WELCOME BACK!</p>
+    <p>To keep connected with us please login with your personal informations</p>
+</div>
+
+<script>
+    window.setTimeout(function () {
+        $("#msg").fadeTo(500, 0).slideUp(500, function () {
+            $(this).remove();
+        });
+    }, 2000);
+</script>

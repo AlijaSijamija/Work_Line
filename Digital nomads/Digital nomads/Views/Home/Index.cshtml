@@ -1,0 +1,218 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<style>
+    body {
+        margin: 0;
+        width: 100%;
+        background-image: url("img/Background.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top;
+        color: #3C473B
+    }
+
+    ul {
+        margin-top: 7px;
+        margin-right: 190px;
+    }
+
+    ul li{
+        display: inline;
+        text-decoration: none;
+        margin-left: 35px;
+        float: right;
+        color: white;
+        text-transform:uppercase;
+    }
+
+    ul li:hover{
+        border-bottom: 1px solid currentColor; /* Or whatever color you want */
+        text-decoration: none;
+    }
+
+    li a {
+        font-size: 20px;
+        padding-bottom: 5px;
+        cursor: pointer;
+        color: white;
+    }   
+
+    a:hover{
+        color: white;
+        text-decoration: none;
+    }
+
+    #logo{
+        width: 200px;
+        float:left;
+        margin-left: 100px;
+    }
+
+    #top{
+        width: 100%;
+        height: 100vh;
+        clear:both;
+    }
+
+    #left{
+        width: 30%;
+        height:100%;
+        float:left;
+        margin-left: 120px;
+    }
+
+
+    #left p:first-child {
+        color: #F0AF1B;
+        font-size:36px;
+        position: relative;
+        top: 20%;
+    }
+
+    #left p{
+        position:relative;
+        top: 20%;
+        width: 300px;
+    }
+
+    #left button {
+        position: relative;
+        top: 23%;
+        background-color: #F0AF1B;
+        border: none;
+        width: 150px;
+        height: 50px;
+        outline: none;
+        color: white;
+    }
+
+    #homepageImg{
+        position:relative;
+        width:90%;
+        height: 80%;
+    }
+
+    #center{
+        width: 100%;
+        height:100%;
+        clear:both;
+    }
+
+    #center{
+        height: 300px;
+    }
+
+    #center p:first-child {
+        color: #F0AF1B;
+        font-size: 36px;
+        position: relative;
+        right: 200px;
+        margin-top: 200px;
+        margin-right: 60px;
+        float: right;
+    }
+
+    #center p:last-child{
+        position: relative;
+        top: 200px;
+        width: 450px;
+        font-size: 16px;
+        margin-top:100px;
+        float:right;
+        text-align: justify;
+    }
+
+    #bottom {
+        height: 1000px;
+        color: #F0AF1B;
+    }
+
+    #bottom div:first-child{
+        position: relative;
+        top:880px;
+        right: 300px;
+        text-align:center;
+    }
+    
+    #bottom div:last-child{
+        position: relative;
+        top:850px;
+        right:70px;
+        text-align:center;
+    }
+
+    #bottom img{
+        height:40px;
+        width:40px;
+    }
+
+    #bottom ul{
+        display: inline;
+    }
+
+</style>
+
+<div id="parent">
+    <div style="padding: 20px;">
+        <img id="logo" src="~/img/logo.jpg" />
+        <ul>
+            <li><a id="contact">Contact</a></li>
+            <li><a id="about">About</a></li>
+            <li><a>Home</a></li>
+        </ul>
+    </div>
+    <div id="top">
+        <div id="left">
+            <p>WORK AND EARN!</p>
+            <p>Motivated employees can make more productive work for company if you reward them.</p>
+            <button asp-action="Login" class="rounded-pill" onclick="location.href='@Url.Action("Login", "Home")'">LOG IN</button>
+        </div>
+    </div>
+    <div id="center">
+        <div>
+            <p>ABOUT</p>
+            <p>
+                By using a sophisticated scoring system, WorkLine  offers their clients a lot of room for improvement.  Making hours at work flexible improves the working  atmosphere and maximizes the productivity of  workers while they are in the right mood and  minimizing the fault percentages while they are not.  Workers get more recognition for their successes  on the platform, which improves the overall  decision making in the client company. For  example, workers with the most scored points or  awards may be given rewards such as a day off or a  prize for their accomplishments. Integrating the  WorkLine systems with other development and  project systems such as JIRA or Azure DevOps  guarantees maximum efficiency for your company!
+                Motivated employees can
+                make more productive work
+                for company if you reward them.
+            </p>
+        </div>
+    </div>
+    <div id="bottom">
+        <div>
+            <span style="font-size: 24px;">WORKLINE</span>
+            <br />
+            <span>info@workline.ba</span>
+            <br />
+            <span>+387123456789</span>
+        </div>
+        <div>
+            <ul>
+                <li><img src="~/img/facebook.jpg" /></li>
+                <li><img src="~/img/linkedin.jpg" /></li>
+                <li><img src="~/img/twitter.jpg" /></li>
+                <li><img src="~/img/instagram.jpg" /></li>
+                <li><img src="~/img/google-plus.jpg" /></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    $("#about").click(function () {
+        $('html,body').animate({
+            scrollTop: $("#center").offset().top + 90
+        },
+            'slow');
+    });
+    $("#contact").click(function () {
+        $("html, body").animate({
+            scrollTop: $(
+                'html, body').get(0).scrollHeight
+        }, 1000);
+    });
+</script>

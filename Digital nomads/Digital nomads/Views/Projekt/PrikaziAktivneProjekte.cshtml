@@ -1,0 +1,211 @@
+﻿
+@{
+    ViewData["Title"] = "PrikaziAktivneProjekte";
+}
+@model IEnumerable<ProjektPrikaziVM>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+        background-image: url("/img/Group 141.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top;
+        color: #3C473B
+    }
+
+    #profil {
+        width: 55px;
+        height: 55px;
+        float: right;
+        border-radius: 50%;
+        position: relative;
+        top: 10px;
+        right: 20px;
+    }
+
+    #menu div:nth-child(2) {
+        border-left: 5px solid white;
+    }
+
+    #user {
+        color: white;
+        float: right;
+        font-size: 20px;
+        position: relative;
+        top: 20px;
+        right: 50px;
+    }
+
+    #menu div {
+        cursor: pointer;
+    }
+
+        #menu div:last-child {
+            position: relative;
+            top: 48%;
+        }
+
+
+    #menu {
+        width: 76px;
+        height: 93%;
+        margin-top: 100px;
+        float: left;
+    }
+
+        #menu img {
+            margin-top: 25px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+    #central {
+        width: calc(100% - 76px);
+        height: 95%;
+        float: left;
+        margin-top: 21px;
+        background-color: #FAFAFA
+    }
+
+    table {
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    #title {
+        color: #F0AF1B;
+        font-size: 30px;
+        margin-bottom: 0;
+        border: none;
+        padding: 0;
+        margin: 20px;
+        position: relative;
+        width: 200px;
+        margin-bottom: 0;
+        text-align: center;
+        font-family: 'Roboto'
+    }
+
+
+    thead {
+        background-color: transparent;
+        color: #3C473B;
+        border: none;
+        font-size: 24px;
+    }
+
+    tbody {
+        color: #F0AF1B;
+        font-size: 18px;
+        background-color: white;
+    }
+
+    td a {
+        background-color: #F0AF1B;
+        border: none;
+        padding: 10px;
+        border-radius: 7px;
+        color: white;
+    }
+
+    #table {
+        padding: 20px;
+        padding-top: 0;
+    }
+
+    #submit {
+        background-color: #F0AF1B;
+        border: none;
+        height: 50px;
+        outline: none;
+        color: white;
+        width: 250px;
+        margin-left: 400px;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+
+    th, td {
+        width: 150px;
+        text-align: center;
+        padding: 5px
+    }
+
+    .geeks {
+        border-right: hidden;
+    }
+
+    .gfg {
+        border-collapse: separate;
+        border-spacing: 0 15px;
+    }
+</style>
+
+
+<div>
+    <img id="profil" src="~/img/profile.jpg" />
+    <span id="user"></span>
+</div>
+
+<div id="menu">
+    @*<div id="firstItem">
+        <img src="~/img/Dashboard.png" alt="Alternate Text" onclick="location.href='@Url.Action("Index", "Radnik")'" />
+    </div>
+    <div id="firstItem">
+        <img src="~/img/task-list.png" alt="Alternate Text" id="blurAction" />
+    </div>
+    <div>
+        <img src="~/img/user.png" alt="Alternate Text" onclick="location.href='@Url.Action("Profil", "Radnik")'" />
+    </div>
+    <div>
+        <img src="~/img/on-off-button.png" alt="Alternate Text" onclick="location.href='@Url.Action("Logout", "Radnik")'" />
+    </div>*@
+</div>
+
+<div id="central">
+    <div id="title">All active projects</div>
+    <div id="table">
+        <table id="table" class="gfg">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Description
+                    </th>
+                    <th>
+                        Deadline
+                    </th>
+                    <th>
+                        Start date
+                    </th>
+                    <th>
+                        End date
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td class="geeks">@x.NazivProjekta</td>
+                        <td>@x.Opis</td>
+                        <td>@x.Rok</td>
+                        <td>@x.DatumPocetka</td>                        
+                        <td>@x.DatumZavrsetka</td>                        
+                    </tr>
+                }
+            </tbody>
+        </table>
+        @*<input class="rounded-pill" id="submit" type="submit" value="Add task" onclick="location.href='@Url.Action("TaskDodaj", "Task")'"/>*@
+    </div>
+
+</div>

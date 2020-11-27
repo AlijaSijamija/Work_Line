@@ -1,0 +1,158 @@
+﻿
+@{
+    ViewData["Title"] = "DodajKorisnika";
+}
+@model KorisnikDodajVM
+
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        width: 100%;
+        overflow: hidden;
+        background-image: url("/img/Group 141.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: top;
+        color: #3C473B;
+        overflow: hidden;
+    }
+
+    #prvi {
+        height: 100%;
+        width: 40%;
+        margin: 0 auto;
+        margin-top: 10px;
+        padding: 50px;
+        padding-bottom: 60px;
+    }
+
+    #drugi {
+        height: 100%;
+        border-radius: 30px;
+        width: 100%;
+        box-shadow: 2px 5px 18px #888888;
+        padding: 50px;
+        overflow: auto;
+        margin-top: 35px;
+    }
+
+        #drugi button, h1 {
+            text-align: center;
+            position: center;
+        }
+
+    #treci {
+        position: relative;
+        height: 40px;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    btn btn-primary {
+        position: absolute;
+        left: 50%;
+        margin: 0;
+    }
+
+    span {
+        display: inline-block;
+        margin: 0;
+    }
+
+
+    #menu {
+        width: 76px;
+        height: 93%;
+        margin-top: 100px;
+        float: left;
+    }
+
+        #menu div:first-child {
+            border-left: 5px solid white;
+        }
+
+        #menu img {
+            margin-top: 25px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        #menu div {
+            cursor: pointer;
+        }
+
+            #menu div:last-child {
+                position: relative;
+                top: 44%;
+            }
+
+    h3 {
+        text-align: center;
+        color: lightgray;
+        margin-top: 10px;
+    }
+</style>
+<h3>Add user</h3>
+<div id="menu">
+    <div id="firstItem">
+        <img src="~/img/Dashboard.png" alt="Alternate Text" onclick="location.href='@Url.Action("Index", "Administrator")'" />
+    </div>
+    <div id="firstItem">
+        <img src="~/img/task-list.png" alt="Alternate Text" id="blurAction" />
+    </div>
+    <div>
+        <img src="~/img/user.png" alt="Alternate Text" onclick="location.href='@Url.Action("Profil", "Administrator")'" />
+    </div>
+    <div>
+        <img src="~/img/on-off-button.png" alt="Alternate Text" onclick="location.href='@Url.Action("Logout", "Administrator")'" />
+    </div>
+</div>
+<div id="prvi">
+    <div id="drugi">
+        <h1>Add user</h1>
+        <form enctype="multipart/form-data" asp-action="SnimiKorisnika">
+            <input style="width:100%" ; type="text" class="form-control" asp-for="Ime" placeholder="Name" />
+            <br />
+
+            <input style="width:100%;type=" text" class="form-control" asp-for="Prezime" placeholder="Surname" />
+
+            <br />
+            <span>Date of employed:</span>
+            <input style="width:70%;float:right;height:37px" type="date" asp-for="DatumZaposlenja" />
+            <br />
+            <br />
+            <select class="form-control" asp-for="LoginRolaId" asp-items="@Model.LoginRola">
+                <option disabled selected>Role</option>
+            </select>
+
+            <br />
+            <input style="width:100%; height:38px" type="text" asp-for="Username" placeholder="UserName" />
+            <br />
+            <br />
+            <input style="width:100%;height:38px" ; type="text" asp-for="Password" placeholder="Password" />
+            <br />
+            <br />
+            <select asp-for="PhotoRutaId" asp-items="@Model.PhotoRoutes" class="form-control">
+                <option disabled selected>Photo</option>
+            </select>
+            @*@foreach (var x in Model.PhotoRoutes)
+                {
+                        <img src="~/imgUpload/@x.Text" style=" border: 1px solid #ddd; border-radius: 1px; padding: 5px; width: 50px;" />
+                }*@
+
+            <br />
+            <span>Skills:</span>
+            <select multiple asp-for="VjestineId" asp-items="@Model.Vjestine" class="form-control "></select>
+            <br />
+            <input type="hidden" asp-for="Id" />
+
+            <div id="treci">
+                <button style="width:150px" type="submit" class="btn btn-warning">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
