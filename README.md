@@ -6,4 +6,4 @@ Work Line is application created during 48 hours on Bicom Systems Hackathon 2020
 
 
 Team: Peaky Blinders
-
+Theme: Digital nomads
